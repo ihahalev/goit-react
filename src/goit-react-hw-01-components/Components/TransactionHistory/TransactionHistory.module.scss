@@ -1,0 +1,19 @@
+.transactionHistory {
+  width: 600px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid rgb(127, 127, 127);
+  height: 30px;
+}
+
+.head {
+  background-color: rgb(98, 205, 219);
+}
+
+.line:not(:nth-last-child(2n)) {
+  background-color: rgba(127, 127, 127, 0.2);
+}
