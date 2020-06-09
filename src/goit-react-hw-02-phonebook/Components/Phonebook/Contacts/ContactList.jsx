@@ -4,8 +4,14 @@ import ContactItem from './ContactItem';
 
 const ContactList = ({ contacts, onDelete, onStatusChange }) => (
   <ul className="task-list">
-    {contacts.map(({ id, ...rest }) => (
-      <ContactItem key={id} {...rest} onDelete={() => onDelete(id)} onStatusChange={() => onStatusChange(id)} />
+    {contacts.map(({ id, name, number }) => (
+      <ContactItem
+        key={id}
+        name={name}
+        number={number}
+        onDelete={() => onDelete(id)}
+        onStatusChange={() => onStatusChange(id)}
+      />
     ))}
   </ul>
 );

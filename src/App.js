@@ -9,7 +9,7 @@ import hw02pb from './views/hw02pb';
 const App = () => (
   <div>
     <Switch>
-      <Route path="/goit-react" exact component={Home} />
+      <Route path="/" exact component={Home} />
       <Route path={routes.hw01} component={hw01} />
       <Route path={routes.hw02fb} component={hw02fb} />
       <Route path={routes.hw02pb} component={hw02pb} />

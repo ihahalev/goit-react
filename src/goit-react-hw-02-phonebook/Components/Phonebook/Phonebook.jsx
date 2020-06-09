@@ -16,10 +16,7 @@ class Phonebook extends Component {
   };
 
   handleAdd = ({ name, number }) => {
-    if (!name) {
-      return;
-    }
-    if (!number) {
+    if (!name || !number) {
       return;
     }
     if (this.state.contacts.find((contact) => contact.name === name)) {
@@ -45,8 +42,7 @@ class Phonebook extends Component {
   filterContacts = () => {
     return this.state.filter
       ? this.state.contacts.filter((contact) => {
-          const contactLowered = contact.name.toLowerCase();
-          if (contactLowered.includes(this.state.filter.toLowerCase())) {
+          if (contact.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
             return contact.name;
           }
         })
