@@ -14,6 +14,12 @@ function Home() {
       <li>
         <Link to={routes.hw02pb}>goit-react-hw-02-phonebook</Link>
       </li>
+      <li>
+        <Link to={routes.hw03pb}>goit-react-hw-03-phonebook</Link>
+      </li>
+      <li>
+        <Link to={routes.hw03img}>goit-react-hw-03-image-finder</Link>
+      </li>
     </ul>
   );
 }
