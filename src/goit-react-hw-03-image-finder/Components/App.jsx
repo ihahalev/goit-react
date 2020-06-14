@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
 
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
@@ -27,10 +28,6 @@ class App extends Component {
     if (nextQuery !== prevQuery) {
       this.fetchImages();
     }
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
   }
 
   fetchImages = () => {
@@ -45,17 +42,15 @@ class App extends Component {
       })
       .catch((error) => {
         this.setState({ error });
-        toast.error(error.message, {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast.error('Error as:', error.message);
       })
-      .finally(() => this.setState({ loading: false }));
+      .finally(() => {
+        this.setState({ loading: false });
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth',
+        });
+      });
   };
 
   handleSearchSubmit = (query) => {
@@ -78,24 +73,18 @@ class App extends Component {
   };
 
   render() {
-    const { images, loading, total, error, largeImg } = this.state;
+    const { images, loading, total, largeImg } = this.state;
     return (
       <div className="App">
         <Searchbar onSubmit={this.handleSearchSubmit} />
-        <ImageGallery items={images} loading={loading} onModalCall={this.handleModalCall} />
-        {total > 12 && !loading && <Button onMore={this.fetchImages} />}
+        <ImageGallery items={images} onModalCall={this.handleModalCall} />
+        {loading ? (
+          <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} className="Loader" />
+        ) : (
+          total > 12 && !loading && <Button onMore={this.fetchImages} />
+        )}
         {largeImg && <Modal largeImage={largeImg} onClose={this.handleModalClose} onClick={this.handleModalClick} />}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        <ToastContainer />
       </div>
     );
   }

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import { v4 as uuidv4 } from 'uuid';
+
+import localStorageUtils from './utils/localStorage';
+import './styles.css';
+
 import ContactForm from './ContactForm';
 import ContactList from './Contacts';
 import Filter from './Filter';
-import { v4 as uuidv4 } from 'uuid';
 
 class Phonebook extends Component {
   state = {
@@ -20,7 +25,7 @@ class Phonebook extends Component {
       return;
     }
     if (this.state.contacts.find((contact) => contact.name === name)) {
-      alert(`${name} is already in contacts`);
+      toast.error(`${name} is already in contacts`, { position: 'top-center' });
       return;
     }
 
@@ -49,12 +54,8 @@ class Phonebook extends Component {
       : this.state.contacts;
   };
 
-  saveData = () => {
-    localStorage.setItem('contactList', JSON.stringify(this.state.contacts));
-  };
-
-  loadData = () => {
-    const contactsParsed = JSON.parse(localStorage.getItem('contactList'));
+  componentDidMount() {
+    const contactsParsed = localStorageUtils.get('contactList');
     console.log(contactsParsed);
 
     if (contactsParsed) {
@@ -62,14 +63,10 @@ class Phonebook extends Component {
         contacts: [...contactsParsed],
       }));
     }
-  };
-
-  componentDidMount() {
-    this.loadData();
   }
 
   componentDidUpdate() {
-    this.saveData();
+    localStorageUtils.save('contactList', this.state.contacts);
   }
 
   render() {
@@ -80,8 +77,10 @@ class Phonebook extends Component {
         <ContactForm onAdd={this.handleAdd} />
 
         <h2>Contacts</h2>
+        <p>Find contacts by name</p>
         {contacts.length > 1 && <Filter filter={filter} onFilter={this.handleFilter} />}
         <ContactList contacts={this.filterContacts()} onDelete={this.handleDelete} />
+        <ToastContainer />
       </div>
     );
   }

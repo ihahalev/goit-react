@@ -29,12 +29,17 @@ class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="phonebook-form">
         <p>Name</p>
         <input type="text" name="name" value={name} onChange={this.handleInputChange} />
-        <p>Number</p>
-        <input type="text" name="number" value={number} onChange={this.handleInputChange} />
-        <br />
+        <p>Number (as 123-45-67)</p>
+        <input
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+          name="number"
+          value={number}
+          onChange={this.handleInputChange}
+        />
         <button type="submit">Add contact</button>
       </form>
     );
