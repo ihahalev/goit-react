@@ -6,7 +6,6 @@ const ContactItem = ({ name, number, onDelete, onStatusChange }) => (
     <span>
       {name}: {number}
     </span>
-    {/* <button>edit</button> */}
     <button onClick={onDelete}>Delete</button>
   </li>
 );

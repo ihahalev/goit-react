@@ -2,10 +2,19 @@ html {
   padding: 10px;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+
+}
+
+.conteiner {
+  min-width: 300px;
+}
+
 .phonebook-form {
   outline: 1px solid black;
-  width: 20%;
-  min-width: 200px;
+
   padding: 10px;
 }
 
@@ -22,4 +31,27 @@ html {
 .phonebook-form button {
   display: block;
   margin-bottom: 10px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.contact-list li {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.contact-list span {
+  margin-right: 5px;
+}
+
+.contact-list button {
+  background-color: #004aff;
+  color: wheat;
+  border: 1px solid #eee;
+  padding: 5px 20px;
+  margin: 2px 5px;
 }

@@ -22,6 +22,7 @@ class Phonebook extends Component {
 
   handleAdd = ({ name, number }) => {
     if (!name || !number) {
+      toast.warn('Fill required fields', { position: 'top-center' });
       return;
     }
     if (this.state.contacts.find((contact) => contact.name === name)) {
@@ -56,7 +57,6 @@ class Phonebook extends Component {
 
   componentDidMount() {
     const contactsParsed = localStorageUtils.get('contactList');
-    console.log(contactsParsed);
 
     if (contactsParsed) {
       this.setState(() => ({
@@ -72,7 +72,7 @@ class Phonebook extends Component {
   render() {
     const { contacts, filter } = this.state;
     return (
-      <div>
+      <div className="conteiner">
         <h1>Phonebook</h1>
         <ContactForm onAdd={this.handleAdd} />
 
