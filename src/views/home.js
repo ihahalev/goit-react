@@ -20,6 +20,9 @@ function Home() {
       <li>
         <Link to={routes.hw03img}>goit-react-hw-03-image-finder</Link>
       </li>
+      <li>
+        <Link to={routes.hw04mov}>goit-react-hw-04-movies</Link>
+      </li>
     </ul>
   );
 }

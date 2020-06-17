@@ -7,9 +7,12 @@ import hw02fb from './views/hw02fb';
 import hw02pb from './views/hw02pb';
 import hw03pb from './views/hw03pb';
 import hw03img from './views/hw03img';
+import hw04mov from './views/hw04mov';
+
+import './styles.css';
 
 const App = () => (
-  <div>
+  <div className="container">
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path={routes.hw01} component={hw01} />
@@ -17,6 +20,7 @@ const App = () => (
       <Route path={routes.hw02pb} component={hw02pb} />
       <Route path={routes.hw03pb} component={hw03pb} />
       <Route path={routes.hw03img} component={hw03img} />
+      <Route path={routes.hw04mov} component={hw04mov} />
     </Switch>
   </div>
 );

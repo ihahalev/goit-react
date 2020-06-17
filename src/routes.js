@@ -4,4 +4,5 @@ export default {
   hw02pb: '/goit-react-hw-02-phonebook',
   hw03pb: '/goit-react-hw-03-phonebook',
   hw03img: '/goit-react-hw-03-image-finder',
+  hw04mov: '/goit-react-hw-04-movies',
 };
