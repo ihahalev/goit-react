@@ -72,7 +72,7 @@ class Phonebook extends Component {
   render() {
     const { contacts, filter } = this.state;
     return (
-      <div className="conteiner">
+      <div className="conteiner-pb">
         <h1>Phonebook</h1>
         <ContactForm onAdd={this.handleAdd} />
 

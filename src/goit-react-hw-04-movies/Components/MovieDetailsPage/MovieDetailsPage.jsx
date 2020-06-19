@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import movieAPI from '../../services/movieAPI';
-import routs from '../../routes';
 
-import Cast from '../Cast';
-import Reviews from '../Reviews';
+import Loader from 'react-loader-spinner';
+
+import movieAPI from '../../services/movieAPI';
+import routes from '../../routes';
+
+// import Cast from '../Cast';
+// import Reviews from '../Reviews';
 
 const MovieDetailsPage = ({ match, location, history }) => {
   const [movie, setUser] = useState();
@@ -18,7 +21,7 @@ const MovieDetailsPage = ({ match, location, history }) => {
     if (location.state && location.state.from) {
       return history.push(location.state.from);
     }
-    history.push(routs.HOME);
+    history.push(routes[0].path);
   };
 
   const { title = '', release_date = '', vote_average = 0, overview = '', genres = [], poster_path = '' } = movie || {};
@@ -47,21 +50,34 @@ const MovieDetailsPage = ({ match, location, history }) => {
         <h4>Additional information</h4>
         <ul>
           <li>
-            <NavLink to={`${match.url}/cast`} className="NavLink" activeClassName="NavLink-active">
+            <NavLink
+              to={{ pathname: `${match.url}/cast`, state: { from: location?.state?.from } }}
+              className="NavLink"
+              activeClassName="NavLink-active"
+            >
               Cast
             </NavLink>
           </li>
           <li>
-            <NavLink to={`${match.url}/reviews`} className="NavLink" activeClassName="NavLink-active">
+            <NavLink
+              to={{ pathname: `${match.url}/reviews`, state: { from: location?.state?.from } }}
+              className="NavLink"
+              activeClassName="NavLink-active"
+            >
               Reviews
             </NavLink>
           </li>
         </ul>
       </div>
-      <Switch>
-        <Route path={`${match.path}/cast`} component={Cast} />
-        <Route path={`${match.path}/reviews`} component={Reviews} />
-      </Switch>
+      <Suspense fallback={<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} className="Loader" />}>
+        <Switch>
+          <Route path={`${match.path}/cast`} component={lazy(() => import('../Cast' /* webpackChunkName: "Cast" */))} />
+          <Route
+            path={`${match.path}/reviews`}
+            component={lazy(() => import('../Reviews' /* webpackChunkName: "Reviews" */))}
+          />
+        </Switch>
+      </Suspense>
     </div>
   ) : null;
 };

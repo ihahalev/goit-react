@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import MovieList from '../MovieList';
-import routs from '../../routes';
+import routes from '../../routes';
 import movieAPI from '../../services/movieAPI';
 import getQueryParams from '../../services/getQueryParams';
 
@@ -21,7 +21,7 @@ class MoviesPage extends Component {
       // pathname: this.props.location.pathname,
       ...this.props.location,
       search: '',
-      pathname: `${routs.MOVIES}`,
+      pathname: `${routes[1].path}`,
     });
   }
 

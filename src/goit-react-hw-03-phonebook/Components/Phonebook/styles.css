@@ -1,10 +1,6 @@
-#root {
-  display: flex;
-  justify-content: center;
-}
-
-.conteiner {
-  min-width: 300px;
+.conteiner-pb {
+  margin: 0 auto;
+  width: 300px;
 }
 
 .phonebook-form {
