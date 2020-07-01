@@ -12,7 +12,7 @@ export default [
     exactRoute: true,
     exactLink: true,
     // componentRout: HomePage,
-    component: lazy(() => import('./Components/HomePage' /* webpackChunkName: "home-page" */)),
+    component: lazy(() => import('./Components/pages/HomePage' /* webpackChunkName: "home-page" */)),
   },
   {
     path: `${baseRoutes[6].path}/movies`,
@@ -21,7 +21,7 @@ export default [
     exactRoute: true,
     exactLink: false,
     // componentRout: MoviesPage,
-    component: lazy(() => import('./Components/MoviesPage' /* webpackChunkName: "movie-page" */)),
+    component: lazy(() => import('./Components/pages/MoviesPage' /* webpackChunkName: "movie-page" */)),
   },
   {
     path: `${baseRoutes[6].path}/movies/:movieId`,
@@ -30,7 +30,7 @@ export default [
     exactRoute: false,
     exactLink: false,
     // componentRout: MovieDetailsPage,
-    component: lazy(() => import('./Components/MovieDetailsPage' /* webpackChunkName: "movie-details" */)),
+    component: lazy(() => import('./Components/pages/MovieDetailsPage' /* webpackChunkName: "movie-details" */)),
   },
 ];
 

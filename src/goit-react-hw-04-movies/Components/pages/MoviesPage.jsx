@@ -9,6 +9,7 @@ class MoviesPage extends Component {
   state = {
     value: '',
     serchMovies: [],
+    error: null,
   };
 
   componentDidMount() {
@@ -38,7 +39,10 @@ class MoviesPage extends Component {
   }
 
   fetchMovies = (query) => {
-    movieAPI.fetchMoviesWithQuery(query).then((response) => this.setState({ serchMovies: [...response], value: '' }));
+    movieAPI
+      .fetchMoviesWithQuery(query)
+      .then((response) => this.setState({ serchMovies: [...response], value: '' }))
+      .catch((error) => this.setState({ error }));
   };
 
   handleChange = (e) => {
@@ -62,7 +66,7 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { serchMovies } = this.state;
+    const { serchMovies, error } = this.state;
     return (
       <>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
@@ -80,7 +84,11 @@ class MoviesPage extends Component {
             onChange={this.handleChange}
           />
         </form>
-        <MovieList items={serchMovies} backFrom={this.props.location} />
+        {error ? (
+          <div>Something is bad: {error}</div>
+        ) : (
+          <MovieList items={serchMovies} backFrom={this.props.location} />
+        )}
       </>
     );
   }

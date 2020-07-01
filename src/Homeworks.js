@@ -10,7 +10,7 @@ function Homeworks() {
     <Suspense fallback={<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} className="Loader" />}>
       <Switch>
         {routes.map(({ path, exact, component }) => (
-          <Route path={path} exact={exact} component={component} />
+          <Route key={path} path={path} exact={exact} component={component} />
         ))}
       </Switch>
     </Suspense>

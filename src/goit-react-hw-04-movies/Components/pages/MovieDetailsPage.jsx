@@ -10,11 +10,12 @@ import routes from '../../routes';
 // import Reviews from '../Reviews';
 
 const MovieDetailsPage = ({ match, location, history }) => {
-  const [movie, setUser] = useState();
+  const [movie, setMovie] = useState();
+  const [error, setError] = useState(null);
   const { movieId } = match.params;
 
   useEffect(() => {
-    movieAPI.fetchMovieDetails(movieId).then(setUser);
+    movieAPI.fetchMovieDetails(movieId).then(setMovie).catch(setError);
   }, [movieId]);
 
   const handleBackFrom = () => {
@@ -26,13 +27,13 @@ const MovieDetailsPage = ({ match, location, history }) => {
 
   const { title = '', release_date = '', vote_average = 0, overview = '', genres = [], poster_path = '' } = movie || {};
 
-  return movie ? (
+  return movie && !error ? (
     <div>
       <button className="back-to" onClick={handleBackFrom}>
         &#60; Last query
       </button>
       <div className="movie-details">
-        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
+        <img src={`${movieAPI.IMG_SERVER}${poster_path}`} alt="" />
         <div>
           <h2>{`${title} (${Number.parseInt(release_date)})`}</h2>
           <p>User Score {vote_average * 10}%</p>
@@ -79,7 +80,9 @@ const MovieDetailsPage = ({ match, location, history }) => {
         </Switch>
       </Suspense>
     </div>
-  ) : null;
+  ) : (
+    <div>Something is bad: {error}</div>
+  );
 };
 
 export default MovieDetailsPage;

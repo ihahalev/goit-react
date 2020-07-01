@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 
 import localStorageUtils from './utils/localStorage';
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 import ContactForm from './ContactForm';
