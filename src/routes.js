@@ -56,4 +56,13 @@ export default [
     label: 'goit-react-hw-04-movies',
     component: lazy(() => import('./goit-react-hw-04-movies/App' /* webpackChunkName: "hw04-movies" */)),
   },
+  {
+    isInMenu: true,
+    exact: false,
+    path: `/goit-react-hw-05-phonebook-ctx`,
+    label: 'goit-react-hw-05-phonebook-ctx',
+    component: lazy(() =>
+      import('./goit-react-hw-05-phonebook-ctx/Components/App' /* webpackChunkName: "hw05-phonebook-ctx" */),
+    ),
+  },
 ];

@@ -8,10 +8,8 @@ function Navigation() {
       {routes.map(
         ({ path, label, isInMenu }) =>
           isInMenu && (
-            <li>
-              <Link key={path} to={path}>
-                {label}
-              </Link>
+            <li key={path}>
+              <Link to={path}>{label}</Link>
             </li>
           ),
       )}
