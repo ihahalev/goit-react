@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Loader from 'react-loader-spinner';
 
@@ -12,6 +12,7 @@ function Homeworks() {
         {routes.map(({ path, exact, component }) => (
           <Route key={path} path={path} exact={exact} component={component} />
         ))}
+        <Redirect to="/" />
       </Switch>
     </Suspense>
   );
