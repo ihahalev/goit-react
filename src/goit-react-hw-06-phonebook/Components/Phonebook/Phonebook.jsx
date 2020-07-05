@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import { v4 as uuidv4 } from 'uuid';
 
 import localStorageUtils from '../utils/localStorage';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,54 +9,9 @@ import ContactList from '../Contacts';
 import Filter from '../Filter';
 import Toolbar from '../Toolbar';
 
-import withTheme from '../hoc/withTheme';
+import { connect } from 'react-redux';
 
 class Phonebook extends Component {
-  state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
-    filter: '',
-  };
-
-  handleAdd = ({ name, number }) => {
-    if (!name || !number) {
-      toast.warn('Fill required fields', { position: 'top-center' });
-      return;
-    }
-    if (this.state.contacts.find((contact) => contact.name === name)) {
-      toast.error(`${name} is already in contacts`, { position: 'top-center' });
-      return;
-    }
-
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, { id: uuidv4(), name, number }],
-    }));
-  };
-
-  handleDelete = (id) => {
-    this.setState(({ contacts }) => ({
-      contacts: contacts.filter((contact) => contact.id !== id),
-    }));
-  };
-
-  handleFilter = (filter) => {
-    this.setState({ filter });
-  };
-
-  filterContacts = () => {
-    return this.state.filter
-      ? this.state.contacts.filter((contact) => {
-          if (contact.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
-            return contact.name;
-          }
-        })
-      : this.state.contacts;
-  };
-
   componentDidMount() {
     const contactsParsed = localStorageUtils.get('contactList');
 
@@ -74,21 +27,24 @@ class Phonebook extends Component {
   }
 
   render() {
-    const { contacts, filter } = this.state;
     const { theme } = this.props;
     return (
-      <div className="conteiner-pb" style={{ background: theme.themeConfig.conteinerBg }}>
-        <Toolbar />
-
-        <ContactForm onAdd={this.handleAdd} />
-
-        <h2>Contacts</h2>
-        {contacts.length > 1 && <Filter filter={filter} onFilter={this.handleFilter} />}
-        <ContactList contacts={this.filterContacts()} onDelete={this.handleDelete} />
-        <ToastContainer />
-      </div>
+      <>
+        <div className="conteiner-pb" style={{ background: theme.themeConfig.conteinerBg }}>
+          <Toolbar />
+          <ContactForm />
+          <h2>Contacts</h2>
+          {/* {contacts.length > 1 && <Filter filter={filter} onFilter={this.handleFilter} />} */}
+          <Filter />
+          <ContactList />
+        </div>
+      </>
     );
   }
 }
 
-export default withTheme(Phonebook);
+const mapStateToProps = (state) => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(Phonebook);
