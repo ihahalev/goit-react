@@ -65,4 +65,13 @@ export default [
       import('./goit-react-hw-05-phonebook-ctx/Components/App' /* webpackChunkName: "hw05-phonebook-ctx" */),
     ),
   },
+  {
+    isInMenu: true,
+    exact: false,
+    path: `/goit-react-hw-06-phonebook`,
+    label: 'goit-react-hw-06-phonebook',
+    component: lazy(() =>
+      import('./goit-react-hw-06-phonebook/Components/App' /* webpackChunkName: "hw06-phonebook" */),
+    ),
+  },
 ];
