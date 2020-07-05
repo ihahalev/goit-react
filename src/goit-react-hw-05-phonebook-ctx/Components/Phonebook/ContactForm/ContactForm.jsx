@@ -33,15 +33,11 @@ class ContactForm extends Component {
       <form onSubmit={this.handleSubmit} className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
         <p style={{ color: theme.themeConfig.fontColor }}>Name</p>
         <input type="text" name="name" value={name} onChange={this.handleInputChange} autoFocus />
-        <p style={{ color: theme.themeConfig.fontColor }}>Number (as 123-45-67)</p>
-        <input
-          type="tel"
-          pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
-          name="number"
-          value={number}
-          onChange={this.handleInputChange}
-        />
-        <button type="submit">Add contact</button>
+        <p style={{ color: theme.themeConfig.fontColor }}>Number</p>
+        <input type="number" name="number" value={number} onChange={this.handleInputChange} />
+        <button type="submit" className="add">
+          Add contact
+        </button>
       </form>
     );
   }

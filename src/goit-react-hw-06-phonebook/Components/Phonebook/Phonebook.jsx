@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 
-import localStorageUtils from './utils/localStorage';
+import localStorageUtils from '../utils/localStorage';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
-import ContactForm from './ContactForm';
-import ContactList from './Contacts';
-import Filter from './Filter';
-import Toolbar from './Toolbar';
+import ContactForm from '../ContactForm';
+import ContactList from '../Contacts';
+import Filter from '../Filter';
+import Toolbar from '../Toolbar';
 
-import withTheme from './hoc/withTheme';
+import withTheme from '../hoc/withTheme';
 
 class Phonebook extends Component {
   state = {
@@ -45,8 +45,8 @@ class Phonebook extends Component {
     }));
   };
 
-  handleFilter = (e) => {
-    this.setState({ filter: e.target.value });
+  handleFilter = (filter) => {
+    this.setState({ filter });
   };
 
   filterContacts = () => {

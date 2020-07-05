@@ -1,6 +1,6 @@
 .conteiner-pb {
   margin: 0 auto;
-  width: 300px;
+  width: 400px;
   background-color: #fff;
 }
 
@@ -104,13 +104,14 @@ h2 {
 
 .phonebook-form input {
   width: 100%;
+  height: 30px;
   margin-bottom: 10px;
   border: 1px solid lightgrey;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
-.phonebook-form button {
+.phonebook-form .add {
   display: block;
   width: 100%;
   background-color: #2196f3;
@@ -119,6 +120,13 @@ h2 {
   border-radius: 5px;
   padding: 5px 20px;
   margin-bottom: 10px;
+}
+
+.phonebook-contact {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
 }
 
 .contact-list {

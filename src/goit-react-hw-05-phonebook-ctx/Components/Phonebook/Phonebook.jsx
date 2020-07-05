@@ -29,7 +29,8 @@ class Phonebook extends Component {
       toast.warn('Fill required fields', { position: 'top-center' });
       return;
     }
-    if (this.state.contacts.find((contact) => contact.name === name)) {
+    const isExisted = this.state.contacts.find((contact) => contact.name === name);
+    if (isExisted) {
       toast.error(`${name} is already in contacts`, { position: 'top-center' });
       return;
     }

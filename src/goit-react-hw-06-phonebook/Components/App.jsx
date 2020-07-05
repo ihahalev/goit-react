@@ -1,13 +1,17 @@
 import React from 'react';
 import Phonebook from './Phonebook';
-import ThemeContext from './Phonebook/context/ThemeContext';
+import ThemeContext from './context/ThemeContext';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 function App() {
   return (
     <>
-      <ThemeContext>
-        <Phonebook />
-      </ThemeContext>
+      <Provider store={store}>
+        <ThemeContext>
+          <Phonebook />
+        </ThemeContext>
+      </Provider>
     </>
   );
 }
