@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import contacsActions from '../../modules/contacts/contactsActions';
+
 const ContactItem = ({ name, number, onDelete, theme }) => (
   <li className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
     <div className="phonebook-contact">
@@ -17,8 +19,15 @@ ContactItem.propTypes = {
   number: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.theme,
-});
+const mapStateToProps = (state, { id }) => {
+  const { name, number } = state.contacts.items.find((item) => item.id === id);
+  return {
+    name,
+    number,
+    theme: state.theme,
+  };
+};
 
-export default connect(mapStateToProps)(ContactItem);
+const mapDispatchToProps = (dispatch, { id }) => ({ onDelete: () => dispatch(contacsActions.deleteContact(id)) });
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);

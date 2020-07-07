@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import ContactItem from './ContactItem';
 import { connect } from 'react-redux';
 
-import contacsActions from '../../redux/contacts/contactsActions';
-
-const ContactList = ({ contacts, onDelete }) => (
+const ContactList = ({ contacts }) => (
   <ul className="contact-list">
-    {contacts.map(({ id, name, number }) => (
-      <ContactItem key={id} name={name} number={number} onDelete={() => onDelete(id)} />
+    {contacts.map(({ id }) => (
+      <ContactItem key={id} id={id} />
     ))}
   </ul>
 );
@@ -36,6 +34,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { onDelete: contacsActions.deleteContact };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default connect(mapStateToProps)(ContactList);

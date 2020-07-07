@@ -15,7 +15,6 @@ const items = (state = initContacts, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD:
       const { name, number } = payload.contact;
-      console.log(payload.contact);
       if (!name || !number) {
         toast.warn('Fill required fields', { position: 'top-center' });
         return state;

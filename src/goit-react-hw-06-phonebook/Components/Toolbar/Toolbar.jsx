@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import themeActions from '../../redux/theme/themeActions';
+import themeActions from '../../modules/theme/themeActions';
 
 const Toolbar = ({ theme, onThemeChange }) => (
   <div className="toolbar">

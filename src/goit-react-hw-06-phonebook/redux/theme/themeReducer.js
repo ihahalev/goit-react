@@ -35,7 +35,3 @@ const themeConfig = (state = themes.light, { type, payload }) => {
 };
 
 export default combineReducers({ themeType, themeConfig });
-
-// themeChange = (theme) => {
-//   this.setState({ themeType: theme, themeConfig: themeConfig[theme] });
-// };
