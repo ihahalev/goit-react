@@ -27,14 +27,14 @@ class Phonebook extends Component {
   }
 
   render() {
-    const { theme } = this.props;
+    const { theme, contacts } = this.props;
     return (
       <>
         <div className="conteiner-pb" style={{ background: theme.themeConfig.conteinerBg }}>
           <Toolbar />
           <ContactForm />
           <h2>Contacts</h2>
-          {/* {contacts.length > 1 && <Filter filter={filter} onFilter={this.handleFilter} />} */}
+          {contacts.length > 1 && <Filter />}
           <Filter />
           <ContactList />
         </div>
@@ -45,6 +45,7 @@ class Phonebook extends Component {
 
 const mapStateToProps = (state) => ({
   theme: state.theme,
+  contacts: state.contacts.items,
 });
 
 export default connect(mapStateToProps)(Phonebook);
