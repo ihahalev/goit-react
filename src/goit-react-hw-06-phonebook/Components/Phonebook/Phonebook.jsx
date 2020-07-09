@@ -28,6 +28,7 @@ class Phonebook extends Component {
 
   render() {
     const { theme, contacts } = this.props;
+    console.log(theme);
     return (
       <>
         <div className="conteiner-pb" style={{ background: theme.themeConfig.conteinerBg }}>

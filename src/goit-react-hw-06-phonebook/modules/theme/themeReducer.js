@@ -17,12 +17,15 @@ export const themes = {
   },
 };
 
-const themeType = createReducer('light', {
-  [themeActions.themeChange]: (state, action) => action.payload,
-});
+const onThemeChange = (state, { payload }) => {
+  return { themeType: payload, themeConfig: themes[payload] };
+};
 
-const themeConfig = createReducer(themes.light, {
-  [themeActions.themeChange]: (state, action) => themes[action.payload],
-});
+const theme = createReducer(
+  { themeType: 'light', themeConfig: themes.light },
+  {
+    [themeActions.themeChange]: onThemeChange,
+  },
+);
 
-export default combineReducers({ themeType, themeConfig });
+export default theme;
