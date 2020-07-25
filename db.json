@@ -1,0 +1,41 @@
+{
+  "contacts": [
+    {
+      "id": "id-1",
+      "name": "Rosie Simpson",
+      "number": "459-12-56"
+    },
+    {
+      "id": "id-2",
+      "name": "Hermione Kline",
+      "number": "443-89-12"
+    },
+    {
+      "id": "id-3",
+      "name": "Eden Clements",
+      "number": "645-17-79"
+    },
+    {
+      "id": "id-4",
+      "name": "Annie Copeland",
+      "number": "227-91-26"
+    }
+  ],
+  "theme": {
+    "current": "ligth"
+  },
+  "themeConfig": {
+    "light": {
+      "conteinerBg": "#fff",
+      "fontColor": "black",
+      "formBg": "lightgray",
+      "btnBg": "#2196f3"
+    },
+    "dark": {
+      "conteinerBg": "#4f4f4f",
+      "fontColor": "white",
+      "formBg": "#5f5f5f",
+      "btnBg": "#d3d3d4"
+    }
+  }
+}

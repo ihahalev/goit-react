@@ -1,0 +1,154 @@
+.conteiner-pb {
+  margin: 0 auto;
+  width: 400px;
+  background-color: #fff;
+}
+
+.toolbar {
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+}
+
+.toolbar h1,
+h2 {
+  color: #3f51b5;
+  margin: 0;
+}
+
+.switch {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+}
+
+.switch__input,
+.switch__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.switch__input {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.switch__input:checked+.switch__label {
+  background-color: #d3d3d4;
+}
+
+.switch__input:checked+.switch__label+.switch__marker {
+  left: calc(100% - 29px);
+}
+
+.switch__input:focus+.switch__label,
+.switch__input:active+.switch__label {
+  box-shadow: 0 0 0 3px #2a6df433;
+}
+
+.switch__label {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  user-select: none;
+  background-color: #2196f3;
+  border-radius: inherit;
+  /* z-index: 1; */
+  transition: background-color 150ms;
+  cursor: pointer;
+}
+
+.switch__marker {
+  position: relative;
+  background-color: white;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  /* z-index: 2; */
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  left: 3px;
+  transition: left 200ms;
+  will-change: left;
+}
+
+.phonebook-form {
+  display: block;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  background-color: #efefef;
+}
+
+.phonebook-form p {
+  font-size: 14px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.phonebook-form input {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.phonebook-form .add {
+  display: block;
+  width: 100%;
+  background-color: #2196f3;
+  color: white;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+}
+
+.phonebook-contact {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.contact-list li {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.contact-list span {
+  margin-right: 5px;
+}
+
+.contact-list button {
+  background-color: #2196f3;
+  color: white;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin: 2px 5px;
+}

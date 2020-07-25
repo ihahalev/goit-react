@@ -48,11 +48,7 @@ class Phonebook extends Component {
 
   filterContacts = () => {
     return this.state.filter
-      ? this.state.contacts.filter((contact) => {
-          if (contact.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
-            return contact.name;
-          }
-        })
+      ? this.state.contacts.filter(({ name }) => name.toLowerCase().includes(this.state.filter.toLowerCase()))
       : this.state.contacts;
   };
 

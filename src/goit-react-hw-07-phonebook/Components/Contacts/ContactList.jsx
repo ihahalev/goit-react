@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import ContactItem from './ContactItem';
 import { connect } from 'react-redux';
 
+import * as contactsSelectors from '../../modules/contacts/constactsSelectors';
+
 const ContactList = ({ contacts }) => (
   <ul className="contact-list">
     {contacts.map(({ id }) => (
@@ -21,13 +23,8 @@ ContactList.propTypes = {
   ),
 };
 
-const mapStateToProps = (state) => {
-  const { items, filter } = state.contacts;
-  const loweredFilter = filter.toLowerCase();
-  const filteredContacts = items.filter(({ name }) => name.toLowerCase().includes(loweredFilter));
-  return {
-    contacts: filteredContacts,
-  };
-};
+const mapStateToProps = (state) => ({
+  contacts: contactsSelectors.getFilteredContacts(state),
+});
 
 export default connect(mapStateToProps)(ContactList);

@@ -36,7 +36,6 @@ class Phonebook extends Component {
           <ContactForm />
           <h2>Contacts</h2>
           {contacts.length > 1 && <Filter />}
-          <Filter />
           <ContactList />
         </div>
       </>
