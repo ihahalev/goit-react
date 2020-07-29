@@ -13,6 +13,10 @@ export const InputText = withStyles({
       color: 'palevioletred',
     },
     '& .MuiOutlinedInput-root': {
+      '& input': {
+        height: '100%',
+        boxSizing: 'border-box',
+      },
       '&:hover fieldset': {
         borderColor: 'yellow',
       },
