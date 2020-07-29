@@ -4,15 +4,11 @@ import themeActions from './themeActions';
 export const themes = {
   light: {
     conteinerBg: '#fff',
-    fontColor: 'black',
     formBg: 'lightgray',
-    btnBg: '#2196f3',
   },
   dark: {
     conteinerBg: '#4f4f4f',
-    fontColor: 'white',
     formBg: '#5f5f5f',
-    btnBg: '#d3d3d4',
   },
 };
 

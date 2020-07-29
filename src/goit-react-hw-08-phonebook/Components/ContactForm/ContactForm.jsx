@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Button from '@material-ui/core/Button';
+import { addBtn, InputText } from '../materialStyles';
+
 import { contactsOperations } from '../../modules/contacts';
 import { themeSelectors } from '../../modules/theme';
 
@@ -34,13 +37,28 @@ class ContactForm extends Component {
     const { theme } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
-        <p style={{ color: theme.themeConfig.fontColor }}>Name</p>
-        <input type="text" name="name" value={name} onChange={this.handleInputChange} autoFocus />
-        <p style={{ color: theme.themeConfig.fontColor }}>Number</p>
-        <input type="number" name="number" value={number} onChange={this.handleInputChange} />
-        <button type="submit" className="add">
+        <InputText
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          name="name"
+          value={name}
+          onChange={this.handleInputChange}
+          autoFocus
+        />
+        <InputText
+          id="outlined-basic"
+          label="Number"
+          variant="outlined"
+          type="number"
+          name="number"
+          value={number}
+          onChange={this.handleInputChange}
+        />
+        <Button variant="contained" color="primary" type="submit" style={addBtn}>
           Add contact
-        </button>
+        </Button>
       </form>
     );
   }

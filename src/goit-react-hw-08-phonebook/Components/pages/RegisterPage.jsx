@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Button from '@material-ui/core/Button';
+import { addBtn, InputText } from '../materialStyles';
+
 import { authOperations } from '../../modules/auth';
 import { themeSelectors } from '../../modules/theme';
 
@@ -37,15 +40,37 @@ class RegisterPage extends Component {
     const { theme } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
-        <p style={{ color: theme.themeConfig.fontColor }}>Name</p>
-        <input type="text" name="name" value={name} onChange={this.handleInputChange} autoFocus />
-        <p style={{ color: theme.themeConfig.fontColor }}>Email</p>
-        <input type="email" name="email" value={email} onChange={this.handleInputChange} />
-        <p style={{ color: theme.themeConfig.fontColor }}>Password</p>
-        <input type="password" name="password" value={password} onChange={this.handleInputChange} />
-        <button type="submit" className="add">
+        <InputText
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          name="name"
+          value={name}
+          onChange={this.handleInputChange}
+          autoFocus
+        />
+        <InputText
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          type="email"
+          name="email"
+          value={email}
+          onChange={this.handleInputChange}
+        />
+        <InputText
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+          value={password}
+          onChange={this.handleInputChange}
+        />
+        <Button variant="contained" color="primary" type="submit" style={addBtn}>
           Register
-        </button>
+        </Button>
       </form>
     );
   }

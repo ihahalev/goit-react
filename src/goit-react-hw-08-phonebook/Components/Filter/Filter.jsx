@@ -1,15 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { InputText } from '../materialStyles';
+
 import { contactsSelectors, contactsActions } from '../../modules/contacts';
 import { themeSelectors } from '../../modules/theme';
 
 const Filter = ({ filter, onFilter, theme }) => (
   <>
-    <label className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
-      <p style={{ color: theme.themeConfig.fontColor }}>Find contacts by name</p>
-      <input type="text" value={filter} onChange={(e) => onFilter(e.target.value)} />
-    </label>
+    <div className="phonebook-form" style={{ background: theme.themeConfig.formBg }}>
+      <InputText
+        id="outlined-basic"
+        label="Find contacts by name"
+        variant="outlined"
+        type="text"
+        value={filter}
+        onChange={(e) => onFilter(e.target.value)}
+      />
+    </div>
   </>
 );
 
