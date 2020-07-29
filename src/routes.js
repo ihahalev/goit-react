@@ -83,4 +83,13 @@ export default [
       import('./goit-react-hw-07-phonebook/Components/App' /* webpackChunkName: "hw07-phonebook" */),
     ),
   },
+  {
+    isInMenu: true,
+    exact: false,
+    path: `/goit-react-hw-08-phonebook`,
+    label: 'goit-react-hw-08-phonebook',
+    component: lazy(() =>
+      import('./goit-react-hw-08-phonebook/Components/App' /* webpackChunkName: "hw08-phonebook" */),
+    ),
+  },
 ];
